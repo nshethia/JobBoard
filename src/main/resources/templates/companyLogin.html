@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Login</h3>
+                </div>
+                	<div th:if="${success}" class="alert alert-success " alert="success">
+						<p th:text="${success}"></p>
+					</div>
+
+                 <div class="row justify-content-center align-items-center my-3">
+        
+                <div class="card-body">
+                    <form th:action="@{/company-login-action}" th:object="${company}" method="post">
+						<div class="form-group">
+                            <label for="CompanyName">Company Name</label>
+                            <input type="text" class="form-control" id="CompanyName" th:field="*{CompanyName}" name="CompanyName" required>
+                            <span th:if="${#fields.hasErrors('CompanyName')}" th:errors="*{CompanyName}"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="CompanyEmail">Email</label>
+                            <input type="text" class="form-control" id="CompanyEmail" th:field="*{CompanyEmail}" name="CompanyEmail" required>
+                            <span th:if="${#fields.hasErrors('CompanyEmail')}" th:errors="*{CompanyEmail}"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" th:field="*{password}" name="password" required>
+                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

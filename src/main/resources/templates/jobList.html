@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f7f6;
+            color: #505962;
+        }
+        .job-card {
+            background-color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 35px;
+            transition: 0.3s;
+        }
+        .job-card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        .container {
+            padding-top: 50px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h2 {
+            font-weight: 700;
+        }
+        .filter-inputs {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        
+        .logout-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.logout-container .btn {
+    display: block; 
+}
+
+.logout-container .btn a {
+    color: white; 
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+	<a href="/appliedJobs" class="fw-bold text-body"><u>Your Applied Jobs</u></a></p>
+    <div class="container">
+        <div class="header">
+            <h2>Job Listings</h2>
+        </div>
+        <div class="row filter-inputs">
+            <div class="col-md-3 mb-3">
+                <input type="text" id="filterTitle" placeholder="Filter by Title" class="form-control">
+            </div>
+            <div class="col-md-3 mb-3">
+                <input type="text" id="filterCompanyName" placeholder="Filter by Company Name" class="form-control">
+            </div>
+            <div class="col-md-3 mb-3">
+                <input type="text" id="filterLocation" placeholder="Filter by Location" class="form-control">
+            </div>
+            <div class="col-md-3 mb-3 d-flex align-items-end">
+                <button onclick="applyFilters()" class="btn btn-primary w-100">Apply Filters</button>
+            </div>
+        </div>
+        <div class="row">
+            <th:block th:each="job : ${list}">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="job-card">
+                        <h4 th:text="${job.title}">Job Title</h4>
+                        <p><strong>Company Name:</strong> <span th:text="${job.companyName}">Company Name</span></p>
+                        <p><strong>Location:</strong> <span th:text="${job.location}">Location</span></p>
+                        <p><strong>Job Description:</strong> <span th:text="${job.jobDescription}"></span></p>
+                        <p><strong>Salary:</strong> <span th:text="${job.salary}"></span></p>
+                        <a th:href="@{/apply(id=${job.jobId})}" class="btn btn-success">Apply</a>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+    <div class="logout-container">
+    <button th:if="${session.user != null}" class="btn btn-primary">
+        <a class="nav-link" href="/logout">Logout</a>
+    </button>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function applyFilters() {
+            var titleFilter = document.getElementById('filterTitle').value.toLowerCase();
+            var companyNameFilter = document.getElementById('filterCompanyName').value.toLowerCase();
+            var locationFilter = document.getElementById('filterLocation').value.toLowerCase();
+
+            var jobs = document.querySelectorAll('.job-card');
+
+            jobs.forEach(function(job) {
+                var jobTitle = job.querySelector('h4').textContent.toLowerCase();
+                var jobCompanyName = job.querySelectorAll('p span')[0].textContent.toLowerCase();
+                var jobLocation = job.querySelectorAll('p span')[1].textContent.toLowerCase();
+
+                if ((titleFilter === '' || jobTitle.includes(titleFilter)) &&
+                    (companyNameFilter === '' || jobCompanyName.includes(companyNameFilter)) &&
+                    (locationFilter === '' || jobLocation.includes(locationFilter))) {
+                    job.parentElement.style.display = '';
+                } else {
+                    job.parentElement.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

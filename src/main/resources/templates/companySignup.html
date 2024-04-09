@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Sign Up</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h3>Sign Up</h3>
+					</div>
+					<div th:if="${error}" class="alert alert-danger">
+						<p th:text="${error}"></p>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/Company-signup-action}" th:object="${company}" method="post">
+							<div class="form-group">
+								<label for="CompanyName">Company Name</label>
+								<input type="CompanyName" class="form-control" id="CompanyName" name="CompanyName"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="CompanyEmail">CompanyEmail</label>
+								<input type="CompanyEmail" class="form-control" id="CompanyEmail" name="CompanyEmail"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" class="form-control" id="password" name="password" required>
+							</div>
+
+							<button type="submit" class="btn btn-primary">Sign Up</button>
+							<p class="text-center text-muted mt-5 mb-0">Have already an account? <a
+									href="/commpany-login" class="fw-bold text-body"><u>Login here</u></a></p>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

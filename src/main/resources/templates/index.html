@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Board</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .jumbotron {
+            background-color: #ffc0cb; 
+            color: #000000;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 0;
+        }
+
+        .btn-post-job {
+            background-color: #ff69b4; 
+            border-color: #ff69b4;
+        }
+
+        .btn-find-job {
+            background-color: #87ceeb; 
+            border-color: #87ceeb;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h1 class="display-3" style="font-family: 'Arial', sans-serif; font-size: 3rem;">Welcome to JobEase</h1>
+        <p class="lead">Connect with Opportunities</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 mb-3">
+                <a href="/companySignup" class="btn btn-post-job btn-lg btn-block">Employer</a>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <a href="/signup" class="btn btn-find-job btn-lg btn-block">Job Seeker</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
