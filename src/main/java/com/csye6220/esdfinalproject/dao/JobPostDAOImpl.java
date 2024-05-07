@@ -1,17 +1,13 @@
 package com.csye6220.esdfinalproject.dao;
-import com.csye6220.esdfinalproject.util.HibernateUtil;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.csye6220.esdfinalproject.model.ApplyJob;
 import com.csye6220.esdfinalproject.model.JobPost;
-import com.csye6220.esdfinalproject.model.User;
-import java.util.List;
+import com.csye6220.esdfinalproject.util.HibernateUtil;
 
 @Component
 public class JobPostDAOImpl implements JobPostDAO {

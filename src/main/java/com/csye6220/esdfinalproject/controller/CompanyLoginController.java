@@ -1,6 +1,5 @@
 package com.csye6220.esdfinalproject.controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,13 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.csye6220.esdfinalproject.model.Company;
-import com.csye6220.esdfinalproject.model.User;
 import com.csye6220.esdfinalproject.service.CompanyService;
-import com.csye6220.esdfinalproject.service.JobPostService;
-import com.csye6220.esdfinalproject.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
 
 
 

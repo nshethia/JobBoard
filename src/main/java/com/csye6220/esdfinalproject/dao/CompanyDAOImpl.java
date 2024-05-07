@@ -11,7 +11,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Component;
 
 import com.csye6220.esdfinalproject.model.Company;
-import com.csye6220.esdfinalproject.model.User;
 import com.csye6220.esdfinalproject.util.HibernateUtil;
 
 
@@ -40,9 +39,11 @@ public class CompanyDAOImpl implements CompanyDAO {
 	    public Company getByEmail(String CompanyEmail) {
 	        try(Session session = sessionFactory.openSession()) {
 	            String queryString = "FROM Company where CompanyEmail= :CompanyEmail";
-	            Query query = session.createQuery(queryString, Company.class);
+	            @SuppressWarnings("rawtypes")
+				Query query = session.createQuery(queryString, Company.class);
 	            query.setParameter("CompanyEmail", CompanyEmail);
-	            List<Company> company = query.list();
+	            @SuppressWarnings("unchecked")
+				List<Company> company = query.list();
 	            return company.size() == 1 ? company.get(0) : null;
 	        }
 	        catch (Exception e){
@@ -52,7 +53,8 @@ public class CompanyDAOImpl implements CompanyDAO {
 	    }
 
 	 private Session getSession(){
-	        ApplicationContext context = new AnnotationConfigApplicationContext(this.getClass());
+	        @SuppressWarnings("resource")
+			ApplicationContext context = new AnnotationConfigApplicationContext(this.getClass());
 	        System.out.println("Session factory: "+context.getBean("sessionFactory"));
 	        sessionFactory = (SessionFactory) context.getBean("sessionFactory");
 	        return sessionFactory.openSession();

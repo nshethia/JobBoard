@@ -3,15 +3,12 @@ package com.csye6220.esdfinalproject.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import com.csye6220.esdfinalproject.model.ApplyJob;
-
-import com.csye6220.esdfinalproject.model.User;
 import com.csye6220.esdfinalproject.util.HibernateUtil;
 
 @Component

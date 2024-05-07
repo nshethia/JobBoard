@@ -3,9 +3,7 @@ package com.csye6220.esdfinalproject.controller;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.csye6220.esdfinalproject.model.Company;
-import com.csye6220.esdfinalproject.model.User;
 import com.csye6220.esdfinalproject.service.CompanyService;
 
 import jakarta.validation.ConstraintViolation;

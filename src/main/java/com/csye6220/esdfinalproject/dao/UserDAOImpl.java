@@ -1,5 +1,6 @@
 package com.csye6220.esdfinalproject.dao;
-import com.csye6220.esdfinalproject.util.HibernateUtil;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -7,8 +8,9 @@ import org.hibernate.query.Query;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
+
 import com.csye6220.esdfinalproject.model.User;
-import java.util.List;
+import com.csye6220.esdfinalproject.util.HibernateUtil;
 
 @Component
 public class UserDAOImpl implements UserDAO {
@@ -35,8 +37,10 @@ public class UserDAOImpl implements UserDAO {
 	    public User getById(Long id) {
 	        try(Session session = sessionFactory.openSession()) {
 	            String queryString = "FROM User where id="+id;
-	            Query query = session.createQuery(queryString, User.class);
-	            List<User> users = query.list();
+	            @SuppressWarnings("rawtypes")
+				Query query = session.createQuery(queryString, User.class);
+	            @SuppressWarnings("unchecked")
+				List<User> users = query.list();
 	            return users.size() == 1 ? users.get(0) : null;
 	        }
 	        catch (Exception e){
@@ -49,7 +53,8 @@ public class UserDAOImpl implements UserDAO {
 	    public User getByEmail(String email) {
 	        try(Session session = sessionFactory.openSession()) {
 	            String queryString = "FROM User where email= :email";
-	            Query query = session.createQuery(queryString, User.class);
+	            @SuppressWarnings("rawtypes")
+				Query query = session.createQuery(queryString, User.class);
 	            query.setParameter("email", email);
 	            List<User> users = query.list();
 	            return users.size() == 1 ? users.get(0) : null;
@@ -66,8 +71,10 @@ public class UserDAOImpl implements UserDAO {
 	    public List<User> getAllUsers() {
 	        try(Session session = sessionFactory.openSession()) {
 	            String queryString = "FROM User";
-	            Query query = session.createQuery(queryString, User.class);
-	            List<User> users = query.list();
+	            @SuppressWarnings("rawtypes")
+				Query query = session.createQuery(queryString, User.class);
+	            @SuppressWarnings("unchecked")
+				List<User> users = query.list();
 	            return users;
 	        }
 	        catch (Exception e){

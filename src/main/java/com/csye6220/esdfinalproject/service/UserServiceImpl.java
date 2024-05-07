@@ -19,17 +19,6 @@ public class UserServiceImpl implements UserService {
 	public void addUser(User user) {
 	userDAO.save(user);	
 	}
-
-	@Override
-	public void updateUser(User user) {
-		userDAO.update(user);	
-	}
-
-	@Override
-	public void deleteUser(User user) {
-		userDAO.delete(user);		
-	}
-
 	@Override
 	public User getUserById(long id) {	
 		return userDAO.getById(id);
@@ -40,10 +29,7 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getByEmail(email);
 	}
 
-	@Override
-	public void deleteUserById(long id) {
-		userDAO.deleteById(id);		
-	}
+
 
 	@Override
 	public List<User> getAllUsers() {		
