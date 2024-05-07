@@ -56,7 +56,8 @@ public class UserDAOImpl implements UserDAO {
 	            @SuppressWarnings("rawtypes")
 				Query query = session.createQuery(queryString, User.class);
 	            query.setParameter("email", email);
-	            List<User> users = query.list();
+	            @SuppressWarnings("unchecked")
+				List<User> users = query.list();
 	            return users.size() == 1 ? users.get(0) : null;
 	        }
 	        catch (Exception e){
